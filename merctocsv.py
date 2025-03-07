@@ -1,7 +1,6 @@
+import csv
 import requests
 from datetime import datetime
-import calendar
-import csv
 
 def is_mercury_retrograde(date):
     try:
@@ -40,9 +39,10 @@ def fetch_and_save_retrograde_dates(start_year, end_year, filename):
     for year in range(start_year, end_year + 1):
         retrograde_dates = fetch_retrograde_dates(year)
         all_retrograde_dates.extend(retrograde_dates)
-    save_to_csv(all_retrograde_dates, "retrogradedates.csv")
+    save_to_csv(all_retrograde_dates, filename)
 
 # Example usage:
-start_year = 2024
+start_year = 2023
 end_year = 2025
-fetch_and_save_retrograde_dates(start_year, end_year, f'mercury_retrograde_{start_year}_{end_year}.csv')
+filename = "data/retrogradedates.csv"
+fetch_and_save_retrograde_dates(start_year, end_year, filename)
